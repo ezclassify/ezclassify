@@ -1,3 +1,6 @@
+# Routine updates preserve the supported compatibility lines.
+# Major upgrades are deliberate; security updates retain their separate policy.
+
 version: 2
 
 updates:
@@ -9,10 +12,16 @@ updates:
     groups:
       github-actions:
         patterns:
-          - '*'
+          - "*"
         update-types:
           - minor
           - patch
     labels:
       - dependencies
       - ci
+    allow:
+      - dependency-name: "*"
+        update-types:
+          - version-update:semver-minor
+          - version-update:semver-patch
+    open-pull-requests-limit: 2
