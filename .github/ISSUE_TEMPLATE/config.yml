@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/ezclassify/ezclassify/blob/main/SECURITY.md
+    about: Report vulnerabilities privately to security@ezclassify.com, never in a public issue. The policy covers every EzClassify product.
+  - name: Private support
+    url: https://ezclassify.com/contact
+    about: Customers who cannot post publicly, including air-gapped sites and contract support, can email support@ezclassify.com or use the contact form.

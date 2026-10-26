@@ -1,0 +1,80 @@
+name: Feature request
+description: Describe a problem an EzClassify product does not solve yet.
+labels:
+  - enhancement
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This tracker is public.** Never include classified information, CUI, real marked documents, credentials, tokens, or customer data. Use synthetic examples, such as the Cedar Valley scenario from [community content](https://github.com/ezclassify/community-content).
+
+        Start with the problem. The outcome you need matters more to us than a particular design, and it often leads to a simpler answer than the one first proposed.
+
+  - type: dropdown
+    id: app
+    attributes:
+      label: What are you using?
+      description: Pick the app this request is for. If it spans several, pick the one you use most.
+      options:
+        - Studio
+        - REST API
+        - MCP server
+        - CLI
+        - EzClassify SSO
+        - UI components (vanilla, React, Angular, Vue)
+        - REST client library
+        - Marking schemes and content (community and licensed schemes, crosswalks)
+        - Installation and deployment (Helm charts, container images, air-gapped install)
+        - Website and documentation
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: client_language
+    attributes:
+      label: Client library language
+      description: Answer only if you picked REST client library above.
+      options:
+        - JavaScript
+        - Java
+        - .NET
+        - Python
+        - Go
+    validations:
+      required: false
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to get done, who is doing it, and what gets in the way today?
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Current workaround
+      description: How you handle it now, if at all, and what that costs you.
+    validations:
+      required: false
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: If you have one in mind, describe it. Leave it blank if you would rather we propose one.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Before you submit
+      options:
+        - label: This request contains no classified information, CUI, real marked documents, credentials, tokens, or customer data.
+          required: true
+        - label: I searched the existing issues and did not find this one.
+          required: true

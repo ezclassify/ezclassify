@@ -1,0 +1,46 @@
+# App and language labels for github/issue-labeler, read by workflows/issue-labeler.yml.
+#
+# Every issue form renders its "What are you using?" answer as a
+# "### What are you using?" heading followed by the chosen option, and its
+# optional "Client library language" answer the same way. Each pattern matches
+# one option exactly, so keep this file in step with the dropdowns in
+# ISSUE_TEMPLATE/*.yml: an option added there needs a label here and in
+# labels.md. The deployed-app and library bug forms each list a subset of the
+# apps, and an app uses the same option text on every form that offers it. "Not sure" has no label on purpose, and an unanswered language
+# renders as "_No response_", which matches nothing.
+#
+# The workflow runs with sync-labels on, so the answers in the issue body own
+# the app and language labels. To reassign an issue, edit those answers; an
+# app or language label added by hand that does not match them is removed on
+# the next edit.
+
+'app: studio':
+  - '/^### What are you using\?\s+Studio\s*$/m'
+'app: rest-api':
+  - '/^### What are you using\?\s+REST API\s*$/m'
+'app: mcp-server':
+  - '/^### What are you using\?\s+MCP server\s*$/m'
+'app: cli':
+  - '/^### What are you using\?\s+CLI\s*$/m'
+'app: sso':
+  - '/^### What are you using\?\s+EzClassify SSO\s*$/m'
+'app: ui':
+  - '/^### What are you using\?\s+UI components \(vanilla, React, Angular, Vue\)\s*$/m'
+'app: rest-client':
+  - '/^### What are you using\?\s+REST client library\s*$/m'
+'app: schemes':
+  - '/^### What are you using\?\s+Marking schemes and content \(community and licensed schemes, crosswalks\)\s*$/m'
+'app: deployment':
+  - '/^### What are you using\?\s+Installation and deployment \(Helm charts, container images, air-gapped install\)\s*$/m'
+'app: website-docs':
+  - '/^### What are you using\?\s+Website and documentation\s*$/m'
+'lang: javascript':
+  - '/^### Client library language\s+JavaScript\s*$/m'
+'lang: java':
+  - '/^### Client library language\s+Java\s*$/m'
+'lang: dotnet':
+  - '/^### Client library language\s+\.NET\s*$/m'
+'lang: python':
+  - '/^### Client library language\s+Python\s*$/m'
+'lang: go':
+  - '/^### Client library language\s+Go\s*$/m'

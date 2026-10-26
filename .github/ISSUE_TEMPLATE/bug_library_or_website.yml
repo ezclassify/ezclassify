@@ -1,0 +1,156 @@
+name: Bug in a library, UI component or the website
+description: A package, UI component, marking scheme, or the website is broken or gives a wrong result.
+labels:
+  - bug
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This tracker is public.** Never include classified information, CUI, real marked documents, credentials, tokens, or customer data. Use synthetic examples, such as the Cedar Valley scenario from [community content](https://github.com/ezclassify/community-content).
+
+        A security vulnerability does not belong here. Report it privately under the [security policy](https://github.com/ezclassify/ezclassify/blob/main/SECURITY.md). That includes an access decision that grants what the policy should refuse, or a marking rendered below the level the rules require.
+
+        A small reproduction is the fastest way to a fix. A link to a repository or a short snippet is enough.
+
+  - type: dropdown
+    id: app
+    attributes:
+      label: What are you using?
+      description: Pick the app where you saw the problem. If it spans several, pick the one you were using.
+      options:
+        - UI components (vanilla, React, Angular, Vue)
+        - REST client library
+        - Marking schemes and content (community and licensed schemes, crosswalks)
+        - Website and documentation
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: client_language
+    attributes:
+      label: Client library language
+      description: Answer only if you picked REST client library above.
+      options:
+        - JavaScript
+        - Java
+        - .NET
+        - Python
+        - Go
+    validations:
+      required: false
+
+  - type: input
+    id: package_version
+    attributes:
+      label: Package and version
+      description: The package or library with its version, from your lockfile or dependency manifest. For the website, give the page address.
+      placeholder: "@ezclassify/rest-client 1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: runtime_versions
+    attributes:
+      label: Language runtime and framework versions
+      description: For a library or UI component, the runtime and any framework it runs in, such as Node, Java, .NET, Python, Go, React, Angular, or Vue. Write N/A for a website or scheme content problem.
+      placeholder: "Node 22.11, React 19.0"
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      description: For UI components and the website.
+      placeholder: "Firefox 131 on macOS"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: talks_to
+    attributes:
+      label: What it talks to
+      description: The service the library or component calls, if any.
+      options:
+        - A self-hosted REST API
+        - The Cedar Valley replay server
+        - A service hosted by EzClassify
+        - Nothing, it runs on its own
+        - Other
+    validations:
+      required: false
+
+  - type: input
+    id: talks_to_version
+    attributes:
+      label: Version of what it talks to
+      description: The REST API or replay server version, if you picked one above.
+      placeholder: "REST API 1.0.0"
+    validations:
+      required: false
+
+  - type: input
+    id: scheme_context
+    attributes:
+      label: Context or scheme in use
+      description: If the problem involves a Context or scheme, give its ID and version. Names only, never marked content.
+      placeholder: "cedar-valley@1.0.0"
+    validations:
+      required: false
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+      description: Include the exact error message or the wrong output.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: If a scheme rule or the documentation says the result should differ, point to it.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: A link to a repository, or a snippet small enough to paste, that shows the problem. Use synthetic markings. For a website problem, list the steps.
+      placeholder: |
+        1. Start the replay server: npx @ezclassify/conformance-server --scenario cedar-valley --port 4010
+        2. Run ...
+        3. See ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: tried
+    attributes:
+      label: What you have already tried
+      description: What you checked and what each step showed, plus any workaround. Examples include a clean install, another version of the package, another browser, or the same call against the replay server.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs and output
+      description: Relevant console, build, or test output. Remove tokens, credentials, hostnames, and marked content before pasting.
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Before you submit
+      options:
+        - label: This report contains no classified information, CUI, real marked documents, credentials, tokens, or customer data.
+          required: true
+        - label: I searched the existing issues and did not find this one.
+          required: true

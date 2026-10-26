@@ -1,0 +1,79 @@
+name: Documentation problem
+description: A page, README, or guide is wrong, unclear, or missing something.
+labels:
+  - documentation
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This tracker is public.** Never include classified information, CUI, real marked documents, credentials, tokens, or customer data. Use synthetic examples, such as the Cedar Valley scenario from [community content](https://github.com/ezclassify/community-content).
+
+        Documentation that would lead someone into an insecure setup is a security issue. Report it privately under the [security policy](https://github.com/ezclassify/ezclassify/blob/main/SECURITY.md).
+
+  - type: dropdown
+    id: app
+    attributes:
+      label: What are you using?
+      description: Pick the app the documentation describes. If it spans several, pick the one you were reading about.
+      options:
+        - Studio
+        - REST API
+        - MCP server
+        - CLI
+        - EzClassify SSO
+        - UI components (vanilla, React, Angular, Vue)
+        - REST client library
+        - Marking schemes and content (community and licensed schemes, crosswalks)
+        - Installation and deployment (Helm charts, container images, air-gapped install)
+        - Website and documentation
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: client_language
+    attributes:
+      label: Client library language
+      description: Answer only if you picked REST client library above.
+      options:
+        - JavaScript
+        - Java
+        - .NET
+        - Python
+        - Go
+    validations:
+      required: false
+
+  - type: input
+    id: location
+    attributes:
+      label: Page or file
+      description: The URL of the page, or the repository and path of the file.
+      placeholder: https://ezclassify.com/docs/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong
+      description: Quote the passage if it helps, and say what is incorrect, unclear, or missing.
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested fix
+      description: What the page should say instead, if you know.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Before you submit
+      options:
+        - label: This report contains no classified information, CUI, real marked documents, credentials, tokens, or customer data.
+          required: true

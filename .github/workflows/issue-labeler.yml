@@ -1,0 +1,35 @@
+name: Issue labeler
+
+# Applies an app label from the "What are you using?" answer and a language
+# label from the "Client library language" answer on every issue form.
+# Patterns live in .github/issue-labeler.yml. The action reads that file
+# through the API, so the job needs no checkout and runs no code from the
+# repository.
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  label:
+    if: ${{ github.repository_owner == 'ezclassify' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: github/issue-labeler@ccca1e16fcb66762200e616fc29b57b940c1cb67 # v3.5
+        with:
+          configuration-path: .github/issue-labeler.yml
+          enable-versioned-regex: 0
+          include-title: 0
+          sync-labels: 1
+          repo-token: ${{ github.token }}

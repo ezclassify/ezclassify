@@ -1,0 +1,226 @@
+name: Bug in a deployed app
+description: Studio, a runtime, the CLI, EzClassify SSO, or an installation is broken or gives a wrong result.
+labels:
+  - bug
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This tracker is public.** Never include classified information, CUI, real marked documents, credentials, tokens, or customer data. Use synthetic examples, such as the Cedar Valley scenario from [community content](https://github.com/ezclassify/community-content).
+
+        A security vulnerability does not belong here. Report it privately under the [security policy](https://github.com/ezclassify/ezclassify/blob/main/SECURITY.md). That includes an access decision that grants what the policy should refuse, or a marking rendered below the level the rules require.
+
+        We reproduce a problem against the same kind of setup you run, so the environment and what you already tried are the most useful parts of this report.
+
+  - type: dropdown
+    id: app
+    attributes:
+      label: What are you using?
+      description: Pick the app where you saw the problem. If it spans several, pick the one you were using.
+      options:
+        - Studio
+        - REST API
+        - MCP server
+        - CLI
+        - EzClassify SSO
+        - Installation and deployment (Helm charts, container images, air-gapped install)
+    validations:
+      required: true
+
+  - type: input
+    id: app_version
+    attributes:
+      label: App version
+      description: |
+        - Studio: `GET /api/v1/health` on your Studio address returns the version.
+        - REST API: `GET /v1/health` returns `engineVersion`.
+        - CLI: run `ezclassify --version`.
+        - MCP server, EzClassify SSO, or anything else: the image tag of the running container.
+      placeholder: "Studio 1.0.0, or REST API 1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: chart_version
+    attributes:
+      label: Helm chart version
+      description: Run `helm list --namespace <namespace>`. The CHART column is the chart version. Leave this empty if Helm did not install it.
+      placeholder: "ezclassify-studio-1.0.0"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Where it runs
+      description: Pick the closest match. Add the details under "Other details" below if none fits exactly.
+      options:
+        - Hosted by EzClassify
+        - Amazon EKS
+        - Azure AKS
+        - Google GKE
+        - Oracle OKE
+        - Red Hat OpenShift
+        - Rancher or RKE2
+        - Other Kubernetes (vanilla, k3s, kubeadm, etc.)
+        - Containers without Kubernetes (Docker or Podman)
+        - CLI on a workstation or CI runner
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: kubernetes_version
+    attributes:
+      label: Kubernetes version
+      description: From `kubectl version`. Leave this empty if you do not run Kubernetes.
+      placeholder: "1.31"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: network
+    attributes:
+      label: Network
+      description: How the app reaches the outside world.
+      options:
+        - Connected to the internet
+        - Restricted egress or proxy
+        - Air-gapped or disconnected
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install_method
+    attributes:
+      label: How it was installed
+      description: Pick the path you used. Choose the hosted option if EzClassify runs it for you.
+      options:
+        - Helm, the Studio chart (ezclassify-studio)
+        - Helm, the Studio API and web charts installed separately
+        - Helm, the REST API or MCP server chart (ezclassify-api, ezclassify-mcp)
+        - GitOps, with Argo CD or Flux applying the charts
+        - Delivery kit for a disconnected site
+        - Container image run with Docker, Podman, or Compose
+        - CLI package installed on a workstation or runner
+        - Hosted by EzClassify, nothing installed
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: sign_in
+    attributes:
+      label: Sign-in
+      description: How people or services authenticate to the app. Choose "Not applicable" if sign-in has nothing to do with the problem, such as a CLI run on a workstation. It matters most for Studio and EzClassify SSO problems.
+      options:
+        - Bundled EzClassify SSO
+        - Your own OIDC provider
+        - Your own SAML provider
+        - Runtime only, with credentials from your gateway or identity provider (JWT, API key, or brokered identity)
+        - Other
+        - Not applicable
+    validations:
+      required: true
+
+  - type: dropdown
+    id: database
+    attributes:
+      label: Database
+      description: Studio stores its data in PostgreSQL. Skip this for a runtime or the CLI.
+      options:
+        - Bundled PostgreSQL (installed by the Studio chart)
+        - Your own PostgreSQL (give the version under "Other details")
+        - Not applicable
+    validations:
+      required: false
+
+  - type: dropdown
+    id: runtime_mode
+    attributes:
+      label: Runtime mode
+      description: For the REST API, MCP server, and CLI. This is the execution profile your license names.
+      options:
+        - Standalone
+        - Managed by Studio
+    validations:
+      required: false
+
+  - type: textarea
+    id: scheme_context
+    attributes:
+      label: Context and schemes in use
+      description: |
+        For the REST API, MCP server, and CLI, give the Context ID and version, and the scheme IDs and versions it composes. Names and versions only, never marked content. Write N/A for a problem in Studio, EzClassify SSO, or an installation that does not involve a Context.
+      placeholder: "Context cedar-valley@1.0.0, composing the scheme cedar-valley@1.0.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: other_details
+    attributes:
+      label: Other details
+      description: Spell out any "Other" answer above. Add anything else about the setup that might matter, such as the ingress or gateway, a service mesh, a proxy, storage, a custom values file, or your own PostgreSQL version.
+    validations:
+      required: false
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+      description: Include the exact error message or the wrong output.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: If a scheme rule or the documentation says the result should differ, point to it.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: The smallest set of steps or requests that shows the problem, using synthetic inputs. If you can, reproduce it against the Cedar Valley replay scenario.
+      placeholder: |
+        1. Start the replay server: npx @ezclassify/conformance-server --scenario cedar-valley --port 4010
+        2. Call ...
+        3. See ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: tried
+    attributes:
+      label: What you have already tried
+      description: |
+        The diagnostic steps you ran and what each one showed, plus any workaround. For example: health and readiness output, pod status and restarts, configuration you checked, whether a restart helped, and whether an earlier version behaves the same way.
+      placeholder: |
+        - GET /v1/ready returned ...
+        - kubectl describe pod showed ...
+        - Rolling back to 1.0.0 ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs and output
+      description: Relevant log or command output. Remove tokens, credentials, hostnames, and marked content before pasting.
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Before you submit
+      options:
+        - label: This report contains no classified information, CUI, real marked documents, credentials, tokens, or customer data.
+          required: true
+        - label: I searched the existing issues and did not find this one.
+          required: true

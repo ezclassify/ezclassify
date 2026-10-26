@@ -1,0 +1,36 @@
+Copyright (c) 2026 EzClassify, LLC. Rights granted as stated below.
+
+Pending counsel review. These terms record the intended grant for this
+repository. They are not a legal conclusion.
+
+This repository holds documentation about EzClassify, a commercial product. It
+ships no software.
+
+  - The documentation in this repository is licensed under the Creative Commons
+    Attribution 4.0 International license (CC BY 4.0):
+    https://creativecommons.org/licenses/by/4.0/
+    DCO.md is the exception. The Developer Certificate of Origin 1.1 text it
+    reproduces is third-party content, licensed by the Linux Foundation under
+    the Creative Commons Attribution-ShareAlike 3.0 Unported license
+    (https://creativecommons.org/licenses/by-sa/3.0/), and is reproduced under
+    that license rather than under CC BY 4.0.
+  - The code examples in this repository, meaning the fenced code blocks and any
+    sample file, are licensed under the Apache License, Version 2.0:
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Nothing here grants any right to the EzClassify software, or to the EzClassify
+name, logo, or other marks.
+
+Software licensing is separate, and each repository states its own terms:
+
+  - The public integration libraries, meaning the JavaScript client and UI
+    packages and the REST clients for Java, .NET, Python, and Go, are licensed
+    under Apache-2.0 in their own repositories.
+  - The wire contracts, meaning the shared types, the JSON Schemas, the OpenAPI
+    document, the conformance corpus, and the schema-only validator, are
+    licensed under Apache-2.0 in the contracts repository.
+  - The public marking schemes are licensed under Apache-2.0 in the
+    community-content repository.
+  - The EzClassify applications, meaning the REST API, the MCP server, the CLI,
+    and Studio, are commercial software distributed under their own license
+    terms.
