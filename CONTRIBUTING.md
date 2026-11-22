@@ -32,8 +32,9 @@ is no separate agreement to sign and nothing to send us. You certify the
 statement by adding a `Signed-off-by` line to each commit, and `git commit -s`
 writes that line for you from your git configuration.
 
-The full text is in [DCO.md](DCO.md). It is the single text for every public
-EzClassify repository, and each of them follows the same process.
+The certificate is published at <https://developercertificate.org/>, and
+[DCO.md](DCO.md) describes the process. It is the single document for every
+public EzClassify repository, and each of them follows the same process.
 
 ## The contribution loop
 
