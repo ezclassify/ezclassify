@@ -1,6 +1,6 @@
 # <img src="assets/icon.svg" alt="" width="32"> EzClassify overview and issues
 
-[![documentation: CC BY 4.0](https://img.shields.io/badge/docs-CC_BY_4.0-blue.svg)](LICENSE)
+[![license: Apache-2.0](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](LICENSE)
 
 [Report a bug or request a feature](https://github.com/ezclassify/ezclassify/issues/new/choose)
 for any EzClassify application or project, and pick the app on the form.
@@ -99,7 +99,6 @@ schemes using the same format.
 
 ## License
 
-Documentation is licensed under CC BY 4.0 and code examples under Apache-2.0,
-subject to the exceptions in [LICENSE](LICENSE). Each software repository
-carries its own license. EzClassify names and logos remain trademarks of
-EzClassify, LLC.
+This repository is licensed under Apache-2.0 ([LICENSE](LICENSE)). Each software
+repository carries its own license. EzClassify names and logos remain trademarks
+of EzClassify, LLC.
