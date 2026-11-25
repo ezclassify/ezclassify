@@ -10,18 +10,18 @@ the corresponding version tags and changelogs.
 
 | Package | Registry | Repository |
 | --- | --- | --- |
-| `@ezclassify/rest-client` | npm | [ezclassify/client-js](https://github.com/ezclassify/client-js) |
+| `@ezclassify/rest-client` | npm | [ezclassify/sdk-js](https://github.com/ezclassify/sdk-js) |
 | `@ezclassify/ui`, `@ezclassify/react`, `@ezclassify/vue`, `@ezclassify/angular` | npm | [ezclassify/web](https://github.com/ezclassify/web) |
 | `@ezclassify/tsconfig`, `@ezclassify/types`, `@ezclassify/schemas`, `@ezclassify/openapi`, `@ezclassify/conformance`, `@ezclassify/validator`, `@ezclassify/conformance-server` | npm | [ezclassify/contracts](https://github.com/ezclassify/contracts) |
-| `com.ezclassify.rest:client` and `:contract`, over the `com.ezclassify.rest:sdk-parent` parent POM | Maven Central | [ezclassify/client-java](https://github.com/ezclassify/client-java) |
-| `EzClassify.Rest.Client` and `EzClassify.Rest.Contract` | NuGet | [ezclassify/client-dotnet](https://github.com/ezclassify/client-dotnet) |
-| `ezclassify-rest-client` and `ezclassify-rest-contract` | PyPI | [ezclassify/client-python](https://github.com/ezclassify/client-python) |
-| `github.com/ezclassify/client-go` | Go modules | [ezclassify/client-go](https://github.com/ezclassify/client-go) |
+| `com.ezclassify:ezclassify-rest-client` | Maven Central | [ezclassify/sdk-java](https://github.com/ezclassify/sdk-java) |
+| `EzClassify.Rest.Client` | NuGet | [ezclassify/sdk-dotnet](https://github.com/ezclassify/sdk-dotnet) |
+| `ezclassify-rest-client` | PyPI | [ezclassify/sdk-python](https://github.com/ezclassify/sdk-python) |
+| `github.com/ezclassify/sdk-go` | Go modules | [ezclassify/sdk-go](https://github.com/ezclassify/sdk-go) |
 | `@ezclassify/schemes` | npm | [ezclassify/community-content](https://github.com/ezclassify/community-content) |
 
 ## The applications
 
-The REST API, the MCP server, the CLI, and Studio are commercial applications,
+The REST API, the MCP server, and Studio are commercial applications,
 not libraries. They are distributed as container images and archives under their
 own license terms, obtained through EzClassify rather than from a public package
 registry. The engine is never published as a consumable library.

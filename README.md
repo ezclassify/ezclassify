@@ -8,22 +8,29 @@ This repository is the central issue tracker and starting point for the
 projects below. Report security vulnerabilities privately through
 [Security](SECURITY.md).
 
-Security marking software for applications and document workflows. EzClassify
-parses and validates markings, helps authors correct them, renders canonical
-output, combines markings from individual parts into an overall marking, and evaluates access
-against a policy.
+EzClassify is software for security markings and sensitivity labels. It parses
+and validates classification markings, suggests corrections, renders banner and
+portion marks, rolls portion marks up into an overall marking, and checks
+whether a person may access marked content. Rules ship as versioned data:
+IC Classification and Control Markings (CAPCO), Controlled Unclassified
+Information (CUI), Traffic Light Protocol (TLP) 2.0, Common Vulnerability
+Scoring System (CVSS), or your own scheme.
 
-Marking systems are versioned data: use a maintained scheme for IC
-Classification and Control Markings (CAPCO), CUI, or TLP, or define a scheme for
-your organization's vocabulary. Applications use the same runtime operations
-across those systems.
+Every client library and UI component here talks to an EzClassify runtime. The
+free developer runtime carries TLP 2.0, CVSS, and demo subsets of CAPCO and CUI.
+The full CAPCO and CUI schemes are licensed content.
+
+Against the `capco-demo` Context on the developer runtime, `SECRET//NOFORN`
+validates and renders as portion mark `S//NF`. The portion marks `S//NF`, `C`,
+and `U` roll up to `SECRET//NOFORN`. `SECRET//NOFORN/REL TO USA, GBR` is
+rejected, because NOFORN cannot be combined with REL TO.
 
 [Website](https://ezclassify.com) · [Architecture](docs/architecture.md) ·
 [Packages and releases](RELEASES.md) · [Report an issue](https://github.com/ezclassify/ezclassify/issues)
 
 ## Integrate with EzClassify
 
-Connect your application to a licensed EzClassify REST deployment using a
+Connect your application to an EzClassify runtime over REST using a
 client for JavaScript, Java, .NET, Python, or Go. For browser applications,
 add marking fields and autocomplete through the shared UI components and
 React, Vue, or Angular bindings.
@@ -47,14 +54,14 @@ registries.
 
 | Repository | Purpose |
 | --- | --- |
-| [JavaScript client](https://github.com/ezclassify/client-js) | `@ezclassify/rest-client` for browser and Node.js applications |
-| [Web UI](https://github.com/ezclassify/web) | `@ezclassify/ui`, React, Vue, and Angular bindings |
-| [Java client](https://github.com/ezclassify/client-java) | `com.ezclassify.rest:client` and companion contract/source artifacts; Java 17+ |
-| [.NET client](https://github.com/ezclassify/client-dotnet) | `EzClassify.Rest.Client` and companion packages; netstandard2.0 and net8.0 |
-| [Python client](https://github.com/ezclassify/client-python) | `ezclassify-rest-client` and companion packages; Python 3.11+ |
-| [Go client](https://github.com/ezclassify/client-go) | Go module for Go 1.26.10+ |
+| [JavaScript client](https://github.com/ezclassify/sdk-js) | `@ezclassify/rest-client` for browser and Node.js applications |
+| [Web UI](https://github.com/ezclassify/web) | `@ezclassify/ui`, `@ezclassify/react`, `@ezclassify/vue`, and `@ezclassify/angular` |
+| [Java client](https://github.com/ezclassify/sdk-java) | `com.ezclassify:ezclassify-rest-client`; Java 17+ |
+| [.NET client](https://github.com/ezclassify/sdk-dotnet) | `EzClassify.Rest.Client`; netstandard2.0 and net8.0 |
+| [Python client](https://github.com/ezclassify/sdk-python) | `ezclassify-rest-client`; Python 3.11+ |
+| [Go client](https://github.com/ezclassify/sdk-go) | `github.com/ezclassify/sdk-go`; Go 1.26.10+ |
 | [Contracts](https://github.com/ezclassify/contracts) | Shared types, JSON Schemas, OpenAPI, schema validation, and conformance data |
-| [Community content](https://github.com/ezclassify/community-content) | Public schemes, teaching examples, and declarative behavior suites |
+| [Community content](https://github.com/ezclassify/community-content) | `@ezclassify/schemes`: public schemes, crosswalks, and worked examples |
 
 The clients use the same REST contract and are tested against a shared
 conformance corpus. Policy evaluation stays in the licensed runtime.
@@ -66,7 +73,6 @@ Applications can also call the HTTP API directly.
 | --- | --- |
 | **REST API** | Marking and access operations for application integrations |
 | **MCP server** | Runtime operations exposed to AI agents through the Model Context Protocol |
-| **CLI** | Marking operations from a terminal or automation script |
 | **Studio** | Authoring and lifecycle management for schemes, guides, access policies, and Contexts; signed content delivery to runtimes |
 
 Deploy on your infrastructure, in a cloud environment, or in a disconnected

@@ -12,9 +12,9 @@ Read this first, then that one if the repository you are targeting has it.
 
 | You want to change | Repository |
 | --- | --- |
-| The browser and Node REST client | [ezclassify/client-js](https://github.com/ezclassify/client-js) |
+| The browser and Node REST client | [ezclassify/sdk-js](https://github.com/ezclassify/sdk-js) |
 | The UI components or the React, Vue, and Angular bindings | [ezclassify/web](https://github.com/ezclassify/web) |
-| A REST client for Java, .NET, Python, or Go | [ezclassify/client-java](https://github.com/ezclassify/client-java), [ezclassify/client-dotnet](https://github.com/ezclassify/client-dotnet), [ezclassify/client-python](https://github.com/ezclassify/client-python), [ezclassify/client-go](https://github.com/ezclassify/client-go) |
+| A REST client for Java, .NET, Python, or Go | [ezclassify/sdk-java](https://github.com/ezclassify/sdk-java), [ezclassify/sdk-dotnet](https://github.com/ezclassify/sdk-dotnet), [ezclassify/sdk-python](https://github.com/ezclassify/sdk-python), [ezclassify/sdk-go](https://github.com/ezclassify/sdk-go) |
 | The wire types, the JSON Schemas, the OpenAPI document, or the conformance corpus | [ezclassify/contracts](https://github.com/ezclassify/contracts) |
 | A public marking scheme | [ezclassify/community-content](https://github.com/ezclassify/community-content) |
 | This documentation | [ezclassify/ezclassify](https://github.com/ezclassify/ezclassify) |
@@ -73,7 +73,7 @@ Every EzClassify product shares one issue tracker in this repository, including
 the commercial applications whose source is private.
 [Open an issue](https://github.com/ezclassify/ezclassify/issues/new/choose),
 and choose a form. Use "Bug in a deployed app" for Studio, the REST API, the
-MCP server, the CLI, EzClassify SSO, or an installation; it asks where you run
+MCP server, EzClassify SSO, or an installation; it asks where you run
 the app and what you have already tried. Use "Bug in a library, UI component or
 the website" for a package, a UI component, a marking scheme, or the website.
 Feature requests and documentation problems have their own forms. Pick the app
