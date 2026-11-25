@@ -2,8 +2,8 @@
 
 EzClassify has one engine. Public clients use its REST wire contract. The engine
 knows how to parse, validate, correct, render, roll up, translate, and
-access-check a marking. It runs inside the licensed REST API, MCP server, and
-CLI, and Studio uses the same engine while you author content. Public REST
+access-check a marking. It runs inside the licensed REST API and MCP server,
+and Studio uses the same engine while you author content. Public REST
 client libraries connect to the API over HTTP.
 
 ## The map
@@ -12,7 +12,7 @@ client libraries connect to the API over HTTP.
             community schemes, your own content,
                  licensed EzClassify content
                               |
-       authored and signed in Studio, or with the CLI
+                  authored and signed in Studio
                               |
                               v
                      signed .ezb bundles
@@ -23,13 +23,13 @@ client libraries connect to the API over HTTP.
   +-------------------------------------------------------+
   |    EzClassify runtime: the engine runs in each one    |
   |                                                       |
-  |    MCP server         REST API             CLI        |
+  |            MCP server             REST API            |
   +-------------------------------------------------------+
-            |                 |                 |
-           MCP       HTTP wire contract  terminal, local
-            |            /v1/ctx/...     or --remote-url
-            v                 |
-        AI agents             |
+                  |                       |
+                 MCP            HTTP wire contract
+                  |                  /v1/ctx/...
+                  v                       |
+              AI agents                   |
                 +-------------+-------------+
                 |             |             |
                 v             v             v
@@ -90,9 +90,6 @@ must retain the same composition as newer components become available.
   translate markings, audit the markings in a document, check access to a
   marking or a document, describe what access a marking requires, and list the
   available Contexts.
-- **CLI.** Marking and document operations from a terminal, plus scheme
-  authoring and testing, bundle signing, and local runtime administration. It
-  runs the engine locally, or calls a REST deployment with `--remote-url`.
 
 A result is the same whichever surface produced it. They are doors onto one
 engine, not separate implementations.
@@ -101,8 +98,7 @@ engine, not separate implementations.
 
 **Studio.** Optional authoring and lifecycle management for content artifacts.
 Studio signs content into bundles a runtime can load, including in a
-disconnected environment. Runtime customers can also sign and install their own
-content with the CLI. Studio's `/api/v1` is its own management API; it is not
+disconnected environment. Studio's `/api/v1` is its own management API; it is not
 the wire contract clients call.
 
 The runtime does not need Studio to operate. Production content arrives as

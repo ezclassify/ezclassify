@@ -1,5 +1,5 @@
 name: Bug in a deployed app
-description: Studio, a runtime, the CLI, EzClassify SSO, or an installation is broken or gives a wrong result.
+description: Studio, a runtime (REST API or MCP server), EzClassify SSO, or an installation is broken or gives a wrong result.
 labels:
   - bug
   - triage
@@ -22,7 +22,6 @@ body:
         - Studio
         - REST API
         - MCP server
-        - CLI
         - EzClassify SSO
         - Installation and deployment (Helm charts, container images, air-gapped install)
     validations:
@@ -35,7 +34,6 @@ body:
       description: |
         - Studio: `GET /api/v1/health` on your Studio address returns the version.
         - REST API: `GET /v1/health` returns `engineVersion`.
-        - CLI: run `ezclassify --version`.
         - MCP server, EzClassify SSO, or anything else: the image tag of the running container.
       placeholder: "Studio 1.0.0, or REST API 1.0.0"
     validations:
@@ -65,7 +63,6 @@ body:
         - Rancher or RKE2
         - Other Kubernetes (vanilla, k3s, kubeadm, etc.)
         - Containers without Kubernetes (Docker or Podman)
-        - CLI on a workstation or CI runner
         - Other
     validations:
       required: true
@@ -103,7 +100,6 @@ body:
         - GitOps, with Argo CD or Flux applying the charts
         - Delivery kit for a disconnected site
         - Container image run with Docker, Podman, or Compose
-        - CLI package installed on a workstation or runner
         - Hosted by EzClassify, nothing installed
         - Other
     validations:
@@ -113,7 +109,7 @@ body:
     id: sign_in
     attributes:
       label: Sign-in
-      description: How people or services authenticate to the app. Choose "Not applicable" if sign-in has nothing to do with the problem, such as a CLI run on a workstation. It matters most for Studio and EzClassify SSO problems.
+      description: How people or services authenticate to the app. Choose "Not applicable" if sign-in has nothing to do with the problem, such as a marking rendered wrongly by the REST API. It matters most for Studio and EzClassify SSO problems.
       options:
         - Bundled EzClassify SSO
         - Your own OIDC provider
@@ -128,7 +124,7 @@ body:
     id: database
     attributes:
       label: Database
-      description: Studio stores its data in PostgreSQL. Skip this for a runtime or the CLI.
+      description: Studio stores its data in PostgreSQL. Skip this for a runtime.
       options:
         - Bundled PostgreSQL (installed by the Studio chart)
         - Your own PostgreSQL (give the version under "Other details")
@@ -140,7 +136,7 @@ body:
     id: runtime_mode
     attributes:
       label: Runtime mode
-      description: For the REST API, MCP server, and CLI. This is the execution profile your license names.
+      description: For the REST API and MCP server. This is the execution profile your license names.
       options:
         - Standalone
         - Managed by Studio
@@ -152,7 +148,7 @@ body:
     attributes:
       label: Context and schemes in use
       description: |
-        For the REST API, MCP server, and CLI, give the Context ID and version, and the scheme IDs and versions it composes. Names and versions only, never marked content. Write N/A for a problem in Studio, EzClassify SSO, or an installation that does not involve a Context.
+        For the REST API and MCP server, give the Context ID and version, and the scheme IDs and versions it composes. Names and versions only, never marked content. Write N/A for a problem in Studio, EzClassify SSO, or an installation that does not involve a Context.
       placeholder: "Context cedar-valley@1.0.0, composing the scheme cedar-valley@1.0.0"
     validations:
       required: true
