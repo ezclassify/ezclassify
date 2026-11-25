@@ -20,7 +20,6 @@ body:
         - Studio
         - REST API
         - MCP server
-        - CLI
         - EzClassify SSO
         - UI components (vanilla, React, Angular, Vue)
         - REST client library

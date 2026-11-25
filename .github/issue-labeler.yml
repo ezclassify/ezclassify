@@ -20,8 +20,6 @@
   - '/^### What are you using\?\s+REST API\s*$/m'
 'app: mcp-server':
   - '/^### What are you using\?\s+MCP server\s*$/m'
-'app: cli':
-  - '/^### What are you using\?\s+CLI\s*$/m'
 'app: sso':
   - '/^### What are you using\?\s+EzClassify SSO\s*$/m'
 'app: ui':

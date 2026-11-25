@@ -26,7 +26,6 @@ Remove `triage` once a maintainer has confirmed the report and its app.
 | `app: studio` | `c5def5` | EzClassify Studio | Studio |
 | `app: rest-api` | `c5def5` | REST API | REST API |
 | `app: mcp-server` | `c5def5` | MCP server | MCP server |
-| `app: cli` | `c5def5` | CLI | CLI |
 | `app: sso` | `c5def5` | EzClassify SSO | EzClassify SSO |
 | `app: ui` | `c5def5` | UI components (vanilla, React, Angular, Vue) | UI components (vanilla, React, Angular, Vue) |
 | `app: rest-client` | `c5def5` | REST client library | REST client library |
